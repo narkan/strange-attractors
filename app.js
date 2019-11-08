@@ -36,6 +36,7 @@ function drawFrame() {
     clearTextOnly();
     // clearWholeCanvas();
 
+    getCoords();
     drawPoint();
 
     t += inc;
@@ -51,7 +52,6 @@ function drawFrame() {
  * Add a point to the canvas
  */
 function drawPoint() {
-    getCoords();
 
     // Draw the point
     canvas.beginPath();
@@ -82,6 +82,7 @@ function getCoords() {
     point.x = x;
     point.y = y;
 }
+
 
 /**
  * Clear the canvas area where the text is displayed
