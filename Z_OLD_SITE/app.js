@@ -24,7 +24,7 @@ const pointRadius = 3;
 
 
 // DRAW A FRAME AT REGULAR INTERVALS
-frameCreator = setInterval( drawFrame, 1000/frameRate );
+const frameCreator = setInterval( drawFrame, 1000/frameRate );
 
 
 /**

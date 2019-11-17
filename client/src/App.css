@@ -1,0 +1,62 @@
+body {
+    font-family: sans;
+}
+
+h1 {
+    text-align: center;
+    font-size: 0.7rem;
+    font-weight: 300;
+    text-transform: uppercase;
+}
+
+#canvas {
+    display: block;
+    margin: 0 auto;
+}
+
+.content-wrap {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+}
+
+.sidebar {
+    width: 20%;
+    /*padding: 3%;*/
+}
+
+.sidebar h2 {
+    font-size: 0.9rem;
+}
+
+.content {
+    /*padding: 3%;*/
+    width: 80%;
+}
+
+/********************/
+
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+}
+
+.App {
+  background-color: #282c34;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #09d3ac;
+}
+
+
