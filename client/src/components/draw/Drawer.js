@@ -1,54 +1,70 @@
-import React from 'react';
-
-const Draw = props => {
+import React, { useEffect } from 'react';
 
 
-// CANVAS
+const Drawer = props => {
+
+    // useEffect( () => {
+    //
+    // });
+
+    console.log(props);
+
+    // CANVAS
+    // See Canvas.js
     const canvasElement = document.getElementById('canvas');
     const canvas = canvasElement.getContext('2d');
+    // const canvasElement = props.canvasElement;
+    // const canvas        = props.canvas;
 
-    const canvasWidth = canvasElement.width;
-    const canvasHeight = canvasElement.height;
+    const canvasWidth   = canvasElement.width;
+    const canvasHeight  = canvasElement.height;
+
+    // console.log(canvasWidth + ' ' + canvasHeight);
 
     canvas.font = "12px Courier";
     canvas.fillStyle = "black";
 
 
-// TIME
+    // TIME
     const start = -10;   // Start time
+    // const start = props.start;   // Start time
     const end = 10;    // End time
     const inc = 0.1;   // Increment
     const frameRate = 200;   // FPS
     let t = start;           // Time
 
 
-// POINTS
+    // POINTS
     let point = {};   // { x, y }
     const pointRadius = 3;
 
 
-// DRAW A FRAME AT REGULAR INTERVALS
-    const frameCreator = setInterval(drawFrame, 1000 / frameRate);
-
+    // DRAW A FRAME AT REGULAR INTERVALS
+    // const frameCreator = setInterval(drawFrame, 1000 / frameRate);
+    drawFrame();
 
     /**
      * Draw next frame
      *     (Called by setInterval every xxx milliseconds)
      */
     function drawFrame() {
-        // Clear canvas before drawing
-        clearTextOnly();
-        // clearWholeCanvas();
 
-        getCoords();
-        drawPoint();
+        for( t = start; t < end; t += inc ) {
+            // Clear canvas before drawing
+            clearTextOnly();
+            // clearWholeCanvas();
 
-        t += inc;
+            getCoords();
+            drawPoint();
+        }
+
+
+        // t += inc;
 
         // If the end is reached, stop the Interval timer
-        if (t > end) {
-            clearInterval(frameCreator);
-        }
+        // if (t > end) {
+        //     clearInterval(frameCreator);
+        // }
     }
 
 
@@ -103,6 +119,11 @@ const Draw = props => {
         canvas.clearRect(0, 0, canvasWidth, canvasHeight);
     }
 
+    return (
+        <div>
+            <p>Drawing</p>
+        </div>
+    );
 };
 
-export default Draw;
+export default Drawer;
