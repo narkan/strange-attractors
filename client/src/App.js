@@ -11,21 +11,25 @@ const App = props => {
     const [start, setStart] = useState(-5);
     const [end, setEnd] = useState(5);
 
-    // const [canvas, setCanvas] = useState(null);
-    // const [canvasElement, setCanvasElement] = useState(null);
+    const [canvas, setCanvas] = useState(null);
+    const [canvasElement, setCanvasElement] = useState(null);
 
     useEffect(() => {
         console.log("App.js: post-render");
-
-        // Eeek! Pretty sure the Drawer component shouldn't be a React component that is called like this, outside the return statment!!!
-        Drawer();
-
     }, []);
 
-    const canvasSetter = (canvas, canvasElement) => {
-        setCanvas(canvas);
-        setCanvasElement(canvasElement);
-        console.log("In canvasSetter");
+    const canvasSetter = (currentCanvasElement, currentCanvas) => {
+        setCanvasElement(currentCanvasElement);
+        setCanvas(currentCanvas);
+
+console.log("******* canvasSetter ... App.js line: 30");
+console.log("In canvasSetter");
+console.log("canvasElement" + canvasElement);
+console.log("canvas" + canvas);
+console.log("***********");
+
+
+        
     };
 
     const startHandler = evt => {
@@ -48,7 +52,7 @@ const App = props => {
 
                 <div className="content">
                     <Canvas canvasSetter={canvasSetter} />
-                    {/*<Drawer canvas={canvas} canvasElement={canvasElement} start={start} />*/}
+                    <Drawer canvas={canvas} canvasElement={canvasElement} start={start} />
                 </div>
             </section>
 

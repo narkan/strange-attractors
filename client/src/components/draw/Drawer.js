@@ -11,10 +11,10 @@ const Drawer = props => {
 
     // CANVAS
     // See Canvas.js
-    const canvasElement = document.getElementById('canvas');
-    const canvas = canvasElement.getContext('2d');
-    // const canvasElement = props.canvasElement;
-    // const canvas        = props.canvas;
+    // const canvasElement = document.getElementById('canvas');
+    // const canvas = canvasElement.getContext('2d');
+    const canvasElement = props.canvasElement;
+    const canvas        = props.canvas;
 
     const canvasWidth   = canvasElement.width;
     const canvasHeight  = canvasElement.height;
