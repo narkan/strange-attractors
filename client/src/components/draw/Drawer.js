@@ -1,20 +1,10 @@
-import React, { useEffect } from 'react';
+// import React, { useEffect, useRef } from 'react';
 
 
-const Drawer = props => {
+const Drawer = (canvasRef, vars) => {
 
-    // useEffect( () => {
-    //
-    // });
-
-    console.log(props);
-
-    // CANVAS
-    // See Canvas.js
-    // const canvasElement = document.getElementById('canvas');
-    // const canvas = canvasElement.getContext('2d');
-    const canvasElement = props.canvasElement;
-    const canvas        = props.canvas;
+    const canvasElement = canvasRef.current;
+    const canvas = canvasElement.getContext("2d");
 
     const canvasWidth   = canvasElement.width;
     const canvasHeight  = canvasElement.height;
@@ -26,13 +16,11 @@ const Drawer = props => {
 
 
     // TIME
-    const start = -10;   // Start time
-    // const start = props.start;   // Start time
-    const end = 10;    // End time
-    const inc = 0.1;   // Increment
-    const frameRate = 200;   // FPS
-    let t = start;           // Time
-
+    let start     = vars.start;   // Start time
+    let end       = vars.end;    // End time
+    let inc       = vars.inc;   // Increment
+    let frameRate = 200;   // FPS
+    let t;
 
     // POINTS
     let point = {};   // { x, y }
@@ -48,11 +36,12 @@ const Drawer = props => {
      *     (Called by setInterval every xxx milliseconds)
      */
     function drawFrame() {
+       clearWholeCanvas();
 
         for( t = start; t < end; t += inc ) {
             // Clear canvas before drawing
-            clearTextOnly();
-            // clearWholeCanvas();
+            // clearTextOnly();
+
 
             getCoords();
             drawPoint();
@@ -79,10 +68,10 @@ const Drawer = props => {
         canvas.fill();
 
         // Add text showing the coordinates to the canvas
-        canvas.fillText('t: ' + t.toFixed(3), 20, canvasHeight - 70);
-        canvas.fillText('x: ' + point.x.toFixed(3), 20, canvasHeight - 50);
-        canvas.fillText('y: ' + point.y.toFixed(3), 20, canvasHeight - 30);
-        canvas.fillText('fps: ' + frameRate, 20, canvasHeight - 10);
+                // canvas.fillText('t: ' + t.toFixed(3), 20, canvasHeight - 70);
+                // canvas.fillText('x: ' + point.x.toFixed(3), 20, canvasHeight - 50);
+                // canvas.fillText('y: ' + point.y.toFixed(3), 20, canvasHeight - 30);
+                // canvas.fillText('fps: ' + frameRate, 20, canvasHeight - 10);
     }
 
 
@@ -119,11 +108,11 @@ const Drawer = props => {
         canvas.clearRect(0, 0, canvasWidth, canvasHeight);
     }
 
-    return (
-        <div>
-            <p>Drawing</p>
-        </div>
-    );
+    // return (
+    //     <div>
+    //         <p>Drawing</p>
+    //     </div>
+    // );
 };
 
 export default Drawer;

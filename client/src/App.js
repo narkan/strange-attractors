@@ -1,7 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import logo from './logo.svg';
 import './App.css';
-import Canvas from './components/draw/Canvas';
 import Start from "./components/settings/Start";
 import Drawer from './components/draw/Drawer';
 import PropTypes from 'prop-types';
@@ -11,26 +10,23 @@ const App = props => {
     const [start, setStart] = useState(-5);
     const [end, setEnd] = useState(5);
 
+    const canvasRef = useRef(null);
     const [canvas, setCanvas] = useState(null);
     const [canvasElement, setCanvasElement] = useState(null);
 
     useEffect(() => {
         console.log("App.js: post-render");
-    }, []);
 
-    const canvasSetter = (currentCanvasElement, currentCanvas) => {
-        setCanvasElement(currentCanvasElement);
-        setCanvas(currentCanvas);
+        // const canvasElement = canvasRef.current;
+        // const canvas = canvasElement.getContext("2d");
 
-console.log("******* canvasSetter ... App.js line: 30");
-console.log("In canvasSetter");
-console.log("canvasElement" + canvasElement);
-console.log("canvas" + canvas);
-console.log("***********");
+        Drawer(canvasRef, {
+            start,
+            end,
+            inc
+        });
+    }, [start]);
 
-
-        
-    };
 
     const startHandler = evt => {
         setStart(evt.target.value);
@@ -51,8 +47,11 @@ console.log("***********");
                 </div>
 
                 <div className="content">
-                    <Canvas canvasSetter={canvasSetter} />
-                    <Drawer canvas={canvas} canvasElement={canvasElement} start={start} />
+                    <div className="canvas-wrap">
+                        <canvas ref={canvasRef} width={800} height={500}></canvas>
+                    </div>
+
+                    {/*<Drawer canvasRef={canvasRef} canvas={canvas} canvasElement={canvasElement} start={start} />*/}
                 </div>
             </section>
 
